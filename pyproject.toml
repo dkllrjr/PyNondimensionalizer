@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "PyNondimensionalizer"
+version = "0.1.0"
+description = ""
+authors = ["Doug Keller <dg.kllr.jr@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+sympy = "^1.7.1"
+pandas = "^1.2.1"
+argparse = "^1.4.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
