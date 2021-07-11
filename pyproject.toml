@@ -9,6 +9,7 @@ python = "^3.9"
 sympy = "^1.7.1"
 pandas = "^1.2.1"
 argparse = "^1.4.0"
+pathlib = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

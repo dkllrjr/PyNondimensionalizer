@@ -1,4 +1,5 @@
-# PyNondimensionalizer
+PyNondimensionalizer
+--------------------
 
 A simple little python program to help find nondimensional numbers, such as the Reynold's number, Rossby number, etc.
 
@@ -12,7 +13,8 @@ $ pip install PyNondimensionalizer
 
 # Fundamentals
 
-This program is based off the work of James Price but contains a lot of general ideas. First, you want to make a matrix with the variables of the problem and the dimensions. Using the pendulum example from `Price`:
+
+This program is based off the work of [Dr. James Price](https://www.whoi.edu/science/po/people/jprice/class/DA_SSSA.pdf) but contains a lot of general ideas. First, you want to make a matrix with the variables of the problem and the dimensions. Using the pendulum example from `Price`:
 
 .. math::
     \begin{matrix}
