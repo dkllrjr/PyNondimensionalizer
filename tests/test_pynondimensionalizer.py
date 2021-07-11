@@ -10,7 +10,7 @@ test_data_path = os.path.dirname(__file__)
 def test_version():
     """Version assertion.
     """
-    assert __version__ == '0.1.0'
+    assert __version__ == '0.1.1'
 
 
 def test_nullspace_solve():

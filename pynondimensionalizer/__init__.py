@@ -156,4 +156,4 @@ You may notice that $S_2$ here is different from $S_2$ above. However, recall th
 """
 
 __docformat__ = 'numpy'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
