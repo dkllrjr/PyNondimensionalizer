@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "PyNondimensionalizer"
-version = "0.1.1"
+version = "0.1.2"
 description = "A command line program that calculates the nullspace vector from a given dimensional matrix."
 authors = ["Doug Keller <dg.kllr.jr@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/dkllrjr/PyNondimensionalizer"
-documentation = "https://alaskanresearcher.dev/pynondimensionalizer/pynondimensionalizer.html"
+documentation = "https://www.alaskanresearcher.dev/PyNondimensionalizer/pynondimensionalizer.html"
 
 [tool.poetry.dependencies]
 python = "^3.9"
