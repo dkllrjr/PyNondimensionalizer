@@ -124,8 +124,13 @@ $ pynondim -i input_file.csv -o output_file.txt
 The following output will be saved to the output file:
 
 ```
-Dimensions: m l t
-Variables: phi t M L g phi0
+Dimensions = 
+
+m l t
+
+Variables = 
+
+phi t M L g phi0
 
 D = 
 
@@ -148,6 +153,12 @@ S =
 ⎢⎢0⎥  ⎢1 ⎥  ⎢0⎥⎥
 ⎢⎢ ⎥  ⎢  ⎥  ⎢ ⎥⎥
 ⎣⎣0⎦  ⎣0 ⎦  ⎣1⎦⎦
+
+𝚷 = 
+
+𝚷 0	= phi^(1) 
+𝚷 1	= t^(2) L^(-1) g^(1) 
+𝚷 2	= phi0^(1) 
 ```
 
 *If no output file is given, the result is printed in the terminal.*
