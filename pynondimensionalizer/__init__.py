@@ -52,7 +52,7 @@ $$
 \\mathbb{S} = \left[ S_1, S_2, S_3, ...,S_N \right]
 $$
 
-$S_1 + S_2$ is still in the nullspace, as well as $S_1 + a S_2$, where $a$ is some constant being multiplied to $S_2$. $N$ will be equal to the number of dimensions, in accordance with the [Buckingham $\\Pi$ theorem](https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem).
+$S_1 + S_2$ is still in the nullspace, as well as $S_1 + a S_2$, where $a$ is some constant being multiplied to $S_2$. $N$ will be equal to the number of variables, $q$, minus dimensions, $k$ ($N = q - k$), in accordance with the [Buckingham $\\Pi$ theorem](https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem). For this example, our variables are ${\\phi, t, M, L, g, \\phi_0}$ so $q = 6$ and our dimensions are ${m, l, t}$ so $k = 3$, therefore $N = 6 - 3 = 3$.
 
 The nullspace for our pendulum dimensional matrix looks like this (from Price):
 
