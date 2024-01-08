@@ -1,24 +1,13 @@
-##############################################################################
-#           By
-#                  ___                  _  __    _ _
-#                 |   \ ___ _  _ __ _  | |/ /___| | |___ _ _
-#                 | |) / _ \ || / _` | | ' </ -_) | / -_) '_|
-#                 |___/\___/\_,_\__, | |_|\_\___|_|_\___|_|
-#                               |___/
-#                 
-#           Please follow the licensing this work is under! Cheers!
-##############################################################################
-
 __docformat__ = "numpy"
 
+import click
 from sympy import Matrix, pretty
 from pandas import read_csv
 from pathlib import Path
-import argparse
 
-##############################################################################
+#  ──────────────────────────────────────────────────────────────────────────
 
-def nullspace_solve(input_file):
+def nullspace_solve(input_file, width=None):
     """Solves for the nullspace matrix, with the given dimensions matrix.
 
     Parameters
@@ -30,22 +19,42 @@ def nullspace_solve(input_file):
     -------
     output_str : str
         String that contains the nullspace matrix, with headers.
+    D : Matrix
+        Dimensional matrix.
+    S : List
+        List of matrices comprising the nullspace matrix.
+    dim : list
+        List of strings of the dimensions.
+    var : list
+        List of strings of the variables.
     """
 
     D_in = read_csv(Path(input_file), index_col=0)
 
+    # building dimensional matrix and getting nullspace
     D = Matrix(D_in)
     S = D.nullspace()
 
     dim = D_in.index.tolist()
-    var = map(str.strip, D_in.columns.tolist())
+    var = list(map(str.strip, D_in.columns.tolist()))
 
     dim_str = ' '.join(dim)
     var_str = ' '.join(var)
 
-    output_str = 'Dimensions: ' + dim_str + '\nVariables: ' + var_str + '\n\nD = \n\n' + pretty(D) + '\n\nS = \n\n' + pretty(S) + '\n'
+    # building string
+    output_str = 'Dimensions = \n\n' + dim_str + '\n\nVariables = \n\n' + var_str + '\n\nD = \n\n' + pretty(D, num_columns=width) + '\n\nS = \n\n' + pretty(S, num_columns=width) + '\n\n'
 
-    return output_str
+    # getting non dimensional numbers
+    output_str += '𝚷 = \n' 
+
+    for i, Si in enumerate(S):
+        output_str += '\n𝚷 ' + str(i) + '\t= '
+        for j, Sij in enumerate(Si):
+            if Sij != 0:
+                output_str += var[j] + '^(' + str(Sij) + ') '
+
+
+    return output_str, D, S, dim, var
 
 
 def output_write(output_str, output_file):
@@ -62,26 +71,21 @@ def output_write(output_str, output_file):
     with open(Path(output_file), 'w') as file:
         file.write(output_str)
 
+#  ──────────────────────────────────────────────────────────────────────────
+# cli
 
-def main():
-    """Argument parser for the command line.
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+@click.command(context_settings=CONTEXT_SETTINGS)
+@click.option('-i', '--input', help='Input csv file containing the dimensional matrix', required=True, type=str)
+@click.option('-o', '--output', help='Output file path and name', type=str, default=None)
+@click.option('-w', '--width', help='Column width for output', type=int, default=None)
+def pynondim(input, output, width):
+    """Find the nullspace of a dimensional matrix and the nondimensional variables.
     """
 
-    parser = argparse.ArgumentParser('pynondim', description='Find the nullspace of a dimensional matrix')  # pynondim instead of pynondimensionalizer because the latter is too bloody long
-    parser.add_argument('--input', '-i', help='Input csv file containing the dimensional matrix', required=True)
-    parser.add_argument('--output', '-o', help='Output file path and name')
+    output_str, S, D, dim, var = nullspace_solve(input, width=width)
 
-    args = parser.parse_args()
-
-    output_str = nullspace_solve(args.input)
-
-    if args.output:
-        output_write(output_str, args.output)
+    if output:
+        output_write(output_str, output)
     else:
         print(output_str)
-
-
-if __name__ == "__main__":
-    main()
-
-##############################################################################

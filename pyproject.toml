@@ -1,23 +1,18 @@
-[tool.poetry]
-name = "PyNondimensionalizer"
-version = "0.1.2"
-description = "A command line program that calculates the nullspace vector from a given dimensional matrix."
-authors = ["Doug Keller <dg.kllr.jr@gmail.com>"]
-license = "MIT"
-readme = "README.md"
-repository = "https://github.com/dkllrjr/PyNondimensionalizer"
-documentation = "https://www.alaskanresearcher.dev/PyNondimensionalizer/pynondimensionalizer.html"
-
-[tool.poetry.dependencies]
-python = "^3.9"
-sympy = "^1.7.1"
-pandas = "^1.2.1"
-argparse = "^1.4.0"
-pathlib = "^1.0.1"
-
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
-
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["setuptools==68.1.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PyNondimensionalizer"
+version = "0.2.0"
+description = "A command line program that calculates the nullspace vector from a given dimensional matrix."
+authors = [
+    {name = "Doug Keller <dg.kllr.jr@gmail.com>"}
+    ]
+license = {file = "LICENSE"}
+readme = "README.md"
+dynamic = ['dependencies', 'scripts', 'entry-points']
+
+[project.urls]
+Repository = "https://github.com/dkllrjr/PyNondimensionalizer"
+Homepage = "https://www.alaskanresearcher.dev/PyNondimensionalizer/pynondimensionalizer.html"
